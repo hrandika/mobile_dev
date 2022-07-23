@@ -1,1 +1,28 @@
-<p>login works! Thsnks</p>
+<div class="background">
+  <mat-toolbar color="primary"></mat-toolbar>
+
+  <div class="logo">
+    <img src="assets/logo.png" alt="" />
+    <h1>Login</h1>
+  </div>
+
+  <span class="form">
+    <form [formGroup]="loginFormGroup">
+      <mat-form-field>
+        <mat-label>User Name</mat-label>
+        <input matInput formControlName="userName" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+
+      <button [disabled]="!loginFormGroup.valid" mat-raised-button color="primary" (click)="onLogin()">Login</button>
+    </form>
+  </span>
+
+  <div class="version">
+    <p>version 1.2</p>
+  </div>
+</div>
