@@ -1,0 +1,25 @@
+@import '../../../../styles';
+
+mat-card {
+  margin: 5px;
+  padding: 1.5rem;
+  text-align: center;
+  width: 15vw;
+  background-color: #252837 !important;
+  color: whitesmoke !important;
+
+  mat-icon {
+    color:  #eb7c69;
+  }
+
+  small {
+    display: block
+  }
+}
+
+
+@media only screen and (max-width: 576px) {
+  mat-card {
+    width: 25vw;
+  }
+}
