@@ -3,6 +3,8 @@
   "version": 2,
   "projects": {
     "e-learn": "apps/e-learn",
-    "e-learn-e2e": "apps/e-learn-e2e"
+    "e-learn-e2e": "apps/e-learn-e2e",
+    "resturent-react": "apps/resturent-react",
+    "resturent-react-e2e": "apps/resturent-react-e2e"
   }
 }

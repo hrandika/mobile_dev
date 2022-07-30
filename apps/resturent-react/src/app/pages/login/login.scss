@@ -1,0 +1,31 @@
+.host {
+  height: 100vh;
+  // flex: 1;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 50vh;
+  & img {
+    width: 150px;
+  }
+}
+
+.credentials {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items:stretch;
+  padding: 16px;
+  gap: 1vh;
+}
+
+.toolbar {
+  height: 64px;
+  width: 100%;
+  background-color: #03a9f4;
+}

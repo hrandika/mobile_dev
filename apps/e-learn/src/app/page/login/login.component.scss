@@ -27,8 +27,8 @@ form {
   //   background-color: red;
 
   & img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    // height: 100px;
     background-color: white;
     border-radius: 50%;
   }
@@ -57,7 +57,7 @@ form {
   .logo {
     & img {
       width: 150px;
-      height: 150px;
+      // height: 150px;
     }
   }
 }
