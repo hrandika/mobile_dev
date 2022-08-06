@@ -17,7 +17,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log();
+    
+  }
 
   onLogin() {
     console.log(this.loginFormGroup.value);

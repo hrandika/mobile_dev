@@ -2,7 +2,12 @@
   <mat-toolbar color="primary"></mat-toolbar>
 
   <div class="logo">
-    <img src="assets/logo.png" alt="" />
+    <picture>
+      <source srcset="assets/logo.webp" type="image/webp" />
+      <source srcset="assets/logo.png" type="image/png" />
+      <img src="assets/logo.png" alt="" />
+    </picture>
+
     <h1>Login</h1>
   </div>
 
@@ -18,7 +23,14 @@
         <input matInput type="password" formControlName="password" />
       </mat-form-field>
 
-      <button [disabled]="!loginFormGroup.valid" mat-raised-button color="primary" (click)="onLogin()">Login</button>
+      <button
+        [disabled]="!loginFormGroup.valid"
+        mat-raised-button
+        color="primary"
+        (click)="onLogin()"
+      >
+        Login
+      </button>
     </form>
   </span>
 
