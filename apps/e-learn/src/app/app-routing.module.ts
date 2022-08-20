@@ -12,6 +12,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./page/login/login.module').then((file) => file.LoginModule),
   },
+  { path: 'map', loadChildren: () => import('./page/map/map.module').then(m => m.MapModule) },
 ];
 
 @NgModule({
