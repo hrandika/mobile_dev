@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/web:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
@@ -19,7 +21,9 @@
           "apps/resturent-react/src/favicon.ico",
           "apps/resturent-react/src/assets"
         ],
-        "styles": ["apps/resturent-react/src/styles.scss"],
+        "styles": [
+          "apps/resturent-react/src/styles.scss"
+        ],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"
       },
@@ -65,14 +69,20 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/resturent-react/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/resturent-react/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/resturent-react"],
+      "outputs": [
+        "coverage/apps/resturent-react"
+      ],
       "options": {
         "jestConfig": "apps/resturent-react/jest.config.ts",
         "passWithNoTests": true

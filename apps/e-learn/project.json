@@ -5,17 +5,28 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
-        "outputPath": "dist/apps/e-learn",
+        "outputPath": "dist/e-learn/browser",
         "index": "apps/e-learn/src/index.html",
         "main": "apps/e-learn/src/main.ts",
         "polyfills": "apps/e-learn/src/polyfills.ts",
         "tsConfig": "apps/e-learn/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/e-learn/src/favicon.ico", "apps/e-learn/src/assets"],
-        "styles": ["apps/e-learn/src/styles.scss", "node_modules/ol/ol.css"],
-        "scripts": []
+        "assets": [
+          "apps/e-learn/src/favicon.ico",
+          "apps/e-learn/src/assets",
+          "apps/e-learn/src/manifest.webmanifest"
+        ],
+        "styles": [
+          "apps/e-learn/src/styles.scss",
+          "node_modules/ol/ol.css"
+        ],
+        "scripts": [],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/e-learn/ngsw-config.json"
       },
       "configurations": {
         "production": {
@@ -72,16 +83,81 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/e-learn/**/*.ts", "apps/e-learn/**/*.html"]
+        "lintFilePatterns": [
+          "apps/e-learn/**/*.ts",
+          "apps/e-learn/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/e-learn"],
+      "outputs": [
+        "coverage/apps/e-learn"
+      ],
       "options": {
         "jestConfig": "apps/e-learn/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/e-learn/server",
+        "main": "apps/e-learn/server.ts",
+        "tsConfig": "apps/e-learn/tsconfig.server.json",
+        "inlineStyleLanguage": "scss"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media",
+          "fileReplacements": [
+            {
+              "replace": "apps/e-learn/src/environments/environment.ts",
+              "with": "apps/e-learn/src/environments/environment.prod.ts"
+            }
+          ],
+          "sourceMap": true
+        },
+        "development": {
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "e-learn:build:development",
+          "serverTarget": "e-learn:server:development"
+        },
+        "production": {
+          "browserTarget": "e-learn:build:production",
+          "serverTarget": "e-learn:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "prerender": {
+      "executor": "@nguniversal/builders:prerender",
+      "options": {
+        "routes": [
+          "/"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "e-learn:build:production",
+          "serverTarget": "e-learn:server:production"
+        },
+        "development": {
+          "browserTarget": "e-learn:build:development",
+          "serverTarget": "e-learn:server:development"
+        }
+      },
+      "defaultConfiguration": "production"
     }
   },
   "tags": []
