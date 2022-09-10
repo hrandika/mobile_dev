@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { filter, interval, map, of, Subscription, take, tap } from 'rxjs';
+import { Component } from '@angular/core';
+import { filter, interval, Observable } from 'rxjs';
 
 interface CardDetails {
   title: string;
@@ -10,7 +10,7 @@ interface CardDetails {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent {
   cards: CardDetails[] = [
     { title: 'Randika' },
     { title: 'Chanaka' },
@@ -22,37 +22,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     { title: 'Supuni' },
   ];
 
-  public count = 0;
-  private subcsription: Subscription;
+  public count$: Observable<number>;
 
   constructor() {
-    //
-    of(this.cards).pipe(
-      tap((result) => console.log(result)),
-      map((x) => {
-        const newArrya = [...x];
-        newArrya.pop();
-        return newArrya;
-      }),
-      tap((result) => console.log(result))
-    );
-    // .subscribe();
-
-    this.subcsription = interval(500)
-      .pipe(
-        tap((v) => console.log(v)),
-        filter((val) => val % 2 !== 0),
-        // tap((v) => console.log(v))
-        tap((v) => (this.count = v))
-      )
-      .subscribe();
-  }
-
-  ngOnInit(): void {
-    console.log();
-  }
-
-  ngOnDestroy(): void {
-    this.subcsription.unsubscribe();
+    this.count$ = interval(500).pipe(filter((val) => val % 2 === 0));
   }
 }
