@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { ChangeUser } from './shared/states/app/app.actions';
 import { AppState } from './shared/states/app/app.state';
 
 @Component({
@@ -9,8 +10,12 @@ import { AppState } from './shared/states/app/app.state';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'e-learn';
-
   @Select(AppState.loading) loading$?: Observable<boolean>;
-  @Select(AppState.user) user$?:Observable<string>;
+  @Select(AppState.user) user$?: Observable<string>;
+
+  constructor(private store: Store) {}
+
+  changeToAdmin() {
+    this.store.dispatch(new ChangeUser('admin@localhost.com'));
+  }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Selector, State } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { ChangeLoading, ChangeUser } from './app.actions';
 
 export interface AppStateModel {
   loading: boolean;
@@ -15,11 +16,24 @@ export interface AppStateModel {
 })
 @Injectable()
 export class AppState {
-  @Selector() static loading(statte: AppStateModel) {
-    return statte.loading;
+  @Selector() static loading(state: AppStateModel) {
+    return state.loading;
   }
 
   @Selector() static user(state: AppStateModel) {
     return state.user;
+  }
+
+  @Action(ChangeUser)
+  changeUser(ctx: StateContext<AppStateModel>, action: ChangeUser) {
+    ctx.patchState({ user: action.user, loading: true });
+    setTimeout(() => {
+      ctx.dispatch(new ChangeLoading(false))
+    }, 2000);
+  }
+
+  @Action(ChangeLoading)
+  changLoading(ctx: StateContext<AppStateModel>, action: ChangeLoading) {
+    ctx.patchState({ loading: action.loading });
   }
 }

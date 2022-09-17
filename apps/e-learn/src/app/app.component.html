@@ -3,15 +3,21 @@
 <a routerLink="login">Login</a> -->
 <!-- <responsive-inc-nx-welcome></responsive-inc-nx-welcome> -->
 <mat-toolbar color="primary">
-    <button mat-icon-button>
-        <mat-icon>menu</mat-icon>
-    </button>
-    <span class="spacer"></span>
-    <button mat-button>Fetch</button>
-    <span>{{user$|async}}</span>
+  <button mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="spacer"></span>
+  <button mat-button (click)="changeToAdmin()">Chage to admin</button>
+  <span>{{ user$ | async }}</span>
 </mat-toolbar>
 
-{{loading$|async}}
-
-
 <router-outlet></router-outlet>
+
+<div *ngIf="loading$ | async" class="loading">
+  <div class="lds-ring">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
