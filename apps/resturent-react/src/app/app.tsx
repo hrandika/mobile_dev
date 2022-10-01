@@ -4,6 +4,7 @@ import { Home } from './pages/home/home';
 import { Login } from './pages/login/login';
 import { Map } from './pages/map/map';
 
+// https://taylor.callsen.me/using-openlayers-with-react-functional-components/
 export function App() {
   return (
     <Routes>
