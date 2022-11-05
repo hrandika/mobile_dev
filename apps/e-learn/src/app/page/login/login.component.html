@@ -1,6 +1,4 @@
 <div class="background">
-  <mat-toolbar color="primary"></mat-toolbar>
-
   <div class="logo">
     <picture>
       <source srcset="assets/logo.webp" type="image/webp" />
@@ -14,8 +12,8 @@
   <span class="form">
     <form [formGroup]="loginFormGroup">
       <mat-form-field>
-        <mat-label>User Name</mat-label>
-        <input matInput formControlName="userName" />
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email" />
       </mat-form-field>
 
       <mat-form-field>
